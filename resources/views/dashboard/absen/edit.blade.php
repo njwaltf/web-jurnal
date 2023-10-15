@@ -26,10 +26,19 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-4">
+                                    <label for="checkAll" class="form-label mx-3">Hadir Semua</label>
+                                    <input type="checkbox" value="checkAll" id="checkAll" class="form-check-input"
+                                        onchange="selectAll()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-lg-12">
                                 <div class="card w-100">
                                     <div class="card-body p-4">
-                                        <h5 class="card-title fw-semibold mb-4">Daftar Nama</h5>
+                                        <h5 class="card-title fw-semibold mb-4">Daftar Nama Siswa</h5>
                                         <div class="table-responsive">
                                             <table class="table text-nowrap mb-0 align-middle table-hover display"
                                                 id="myTable">
@@ -83,7 +92,7 @@
                                                                 </td>
                                                                 <td class="border-bottom-0">
                                                                     <input type="checkbox" name="attendance[]"
-                                                                        id="" value="Hadir"
+                                                                        value="Hadir" class="select-option"
                                                                         @if ($absen_detail->attendance === 'Hadir') checked @endif>
                                                                 </td>
                                                                 <td class="border-bottom-0">
@@ -136,4 +145,16 @@
         </div>
     </form>
     {{-- @dd(url()->full()) --}}
+    <script>
+        const checkAll = document.querySelector("#checkAll");
+        const checkOption = document.querySelectorAll(".select-option");
+        // console.log(checkOption);
+
+        function selectAll() {
+            const isChecked = checkAll.checked;
+            for (let i = 0; i < checkOption.length; i++) {
+                checkOption[i].checked = isChecked;
+            }
+        }
+    </script>
 @endsection

@@ -155,6 +155,9 @@ class AbsenController extends Controller
      */
     public function destroy(Absen $absen)
     {
-        //
+        Absen::destroy($absen->id);
+        $whereArray = array('date_detail' => $absen->date, 'rombel_id' => $absen->rombel_id);
+        AbsenDetail::whereArray($whereArray)->delete();
+        return redirect('/dashboard/absen')->with('successDelete', 'Data absen berhasil dihapus!');
     }
 }

@@ -27,5 +27,12 @@ class AbsenDetail extends Model
     {
         return $this->belongsTo(Rombel::class);
     }
+    public function scopeWhereArray($query, $array)
+    {
+        foreach ($array as $field => $value) {
+            $query->where($field, $value);
+        }
+        return $query;
+    }
     use HasFactory;
 }

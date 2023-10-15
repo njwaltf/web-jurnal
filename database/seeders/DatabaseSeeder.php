@@ -43,5 +43,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MapelSeeder::class);
         $this->call(AbsenSeeder::class);
         $this->call(AbsenDetailSeeder::class);
+        $this->call(JurnalSeeder::class);
     }
 }

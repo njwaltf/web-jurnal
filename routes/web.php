@@ -1,14 +1,18 @@
 <?php
 
 use App\Http\Controllers\AbsenController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\JurnalController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\RombelController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Models\Jurnal;
+use App\Models\Student;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +49,7 @@ Route::resource('/dashboard/jadwal', JadwalController::class);
 Route::resource('/dashboard/mapel', MapelController::class);
 Route::resource('/dashboard/rombel', RombelController::class);
 Route::resource('/dashboard/absen', AbsenController::class);
+Route::resource('/dashboard/jurnal', JurnalController::class);
 
 // absen
 // Route::get('/dashboard/absen/edit', [AbsenController::class, 'edit']);
