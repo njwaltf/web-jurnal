@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('absens', function (Blueprint $table) {
             $table->id();
-            $table->string('date');
+            $table->string('date', 200);
             $table->foreignId('rombel_id');
             $table->integer('hadir')->nullable();
             $table->integer('izin')->nullable();

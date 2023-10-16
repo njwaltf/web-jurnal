@@ -12,10 +12,10 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
-            $table->string('role');
+            $table->string('username', 200);
+            $table->string('role', 200);
             $table->foreignId('rombel_id')->nullable;
-            $table->string('password');
+            $table->string('password', 200);
             $table->rememberToken();
             $table->timestamps();
         });

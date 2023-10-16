@@ -12,11 +12,11 @@ return new class extends Migration {
     {
         Schema::create('absen_details', function (Blueprint $table) {
             $table->id();
-            $table->string('date_detail')->nullable();
+            $table->string('date_detail', 200)->nullable();
             $table->foreignId('student_id');
             $table->foreignId('rombel_id');
-            $table->string('attendance')->nullable();
-            $table->string('detail')->nullable();
+            $table->string('attendance', 200)->nullable();
+            $table->string('detail', 200)->nullable();
             $table->timestamps();
         });
     }

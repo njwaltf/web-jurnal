@@ -12,18 +12,18 @@ return new class extends Migration {
     {
         Schema::create('jurnals', function (Blueprint $table) {
             $table->id();
-            $table->string('date');
+            $table->string('date', 200);
             $table->foreignId('teacher_id');
             $table->foreignId('rombel_id');
             $table->foreignId('mapel_id')->nullable();
-            $table->string('kd')->nullable();
-            $table->string('material')->nullable();
-            $table->string('task')->nullable();
+            $table->string('kd', 200)->nullable();
+            $table->string('material', 200)->nullable();
+            $table->string('task', 200)->nullable();
             $table->integer('sakit')->nullable();
             $table->integer('izin')->nullable();
             $table->integer('alpha')->nullable();
             $table->integer('hadir')->nullable();
-            $table->string('detail')->nullable();
+            $table->string('detail', 200)->nullable();
             $table->timestamps();
         });
     }

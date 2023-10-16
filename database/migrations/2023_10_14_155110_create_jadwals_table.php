@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
-            $table->string('day');
+            $table->string('day', 200);
             $table->foreignId('teacher_id');
             $table->foreignId('rombel_id');
             $table->integer('start');

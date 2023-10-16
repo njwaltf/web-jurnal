@@ -12,8 +12,8 @@ return new class extends Migration {
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('nip')->unique();
+            $table->string('name', 200);
+            $table->string('nip', 20)->unique();
             $table->foreignId('mapel_id');
             $table->timestamps();
         });
