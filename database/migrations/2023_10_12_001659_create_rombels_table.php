@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('rombels', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100)->unique();
+            $table->string('name', 50);
             $table->foreignId('jurusan_id');
             $table->timestamps();
         });
