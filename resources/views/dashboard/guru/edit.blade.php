@@ -19,10 +19,11 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="name" class="form-label">Nama Lengkap</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                        id="name" name="name" value="{{ old('name', $teacher->name) }}">
-                                    @error('name')
+                                    <label for="teacher_name" class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control @error('teacher_name') is-invalid @enderror"
+                                        id="teacher_name" name="teacher_name"
+                                        value="{{ old('teacher_name', $teacher->teacher_name) }}">
+                                    @error('teacher_name')
                                         <p class="invalid" style="color: red">
                                             {{ $message }}
                                         </p>
@@ -54,12 +55,33 @@
                                         @forelse ($mapels as $mapel)
                                             <option value="{{ $mapel->id }}"
                                                 @if ($teacher->mapel_id === $mapel->id) selected @endif>
-                                                {{ $mapel->name }}</option>
+                                                {{ $mapel->mapel_name }}</option>
                                         @empty
                                             <option value="">Belum diset</option>
                                         @endforelse
                                     </select>
                                     @error('mapel_id')
+                                        <p class="invalid" style="color: red">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-4">
+                                    <label for="jurusan_id" class="form-label">Jurusan</label>
+                                    <select class="form-select @error('jurusan_id') is-invalid @enderror"
+                                        aria-label="Default select example" id="jurusan_id" name="jurusan_id">
+                                        <option value="" selected>Set Mapel</option>
+                                        @forelse ($jurusans as $jurusan)
+                                            <option value="{{ $jurusan->id }}"
+                                                @if ($teacher->jurusan_id === $jurusan->id) selected @endif>
+                                                {{ $jurusan->name }}</option>
+                                        @empty
+                                            <option value="">Belum diset</option>
+                                        @endforelse
+                                    </select>
+                                    @error('jurusan_id')
                                         <p class="invalid" style="color: red">
                                             {{ $message }}
                                         </p>

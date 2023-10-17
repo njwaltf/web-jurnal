@@ -9,7 +9,7 @@
     <form action="/dashboard/mapel" method="post">
         @csrf
         <div class="row">
-            <div class="col-lg-7">
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">Data Mapel</h5>
@@ -18,10 +18,29 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="name" class="form-label">Nama Mata Pelajaran</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                        id="name" name="name" value="{{ old('name') }}">
-                                    @error('name')
+                                    <label for="mapel_name" class="form-label">Nama Mata Pelajaran</label>
+                                    <input type="text" class="form-control @error('mapel_name') is-invalid @enderror"
+                                        id="mapel_name" name="mapel_name" value="{{ old('mapel_name') }}">
+                                    @error('mapel_name')
+                                        <p class="invalid" style="color: red">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="mb-4">
+                                    <label for="title" class="form-label">Jurusan</label>
+                                    <select class="form-select @error('jurusan_id') is-invalid @enderror"
+                                        aria-label="Default select example" id="jurusan_id" name="jurusan_id">
+                                        <option value="" selected>Set Jurusan</option>
+                                        @forelse ($jurusans as $mapel)
+                                            <option value="{{ $mapel->id }}">{{ $mapel->name }}</option>
+                                        @empty
+                                            <option value="">Belum diset</option>
+                                        @endforelse
+                                    </select>
+                                    @error('jurusan_id')
                                         <p class="invalid" style="color: red">
                                             {{ $message }}
                                         </p>

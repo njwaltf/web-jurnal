@@ -55,6 +55,9 @@
                                         <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Nama Mata Pelajaran</h6>
                                         </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Jurusan</h6>
+                                        </th>
                                         @if (auth()->user()->role === 'Admin')
                                             <th class="border-bottom-0">
                                                 <h6 class="fw-semibold mb-0">Action</h6>
@@ -70,7 +73,10 @@
                                                     <h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">{{ $mapel->name }}</h6>
+                                                    <h6 class="fw-semibold mb-1">{{ $mapel->mapel_name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $mapel->jurusan->name }}</h6>
                                                 </td>
                                             </tr>
                                         @empty
@@ -87,7 +93,10 @@
                                                     <h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">{{ $mapel->name }}</h6>
+                                                    <h6 class="fw-semibold mb-1">{{ $mapel->mapel_name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $mapel->jurusan->name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <form action="/dashboard/mapel/{{ $mapel->id }}" method="post"

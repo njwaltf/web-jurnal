@@ -124,9 +124,17 @@
                             <li class="sidebar-item">
                                 <a class="sidebar-link" href="/dashboard/rombel" aria-expanded="false">
                                     <span>
-                                        <i class="ti ti-users"></i>
+                                        <i class="ti ti-school"></i>
                                     </span>
                                     <span class="hide-menu">Rombel</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="/dashboard/user" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-users"></i>
+                                    </span>
+                                    <span class="hide-menu">Kelola User</span>
                                 </a>
                             </li>
                         @endif

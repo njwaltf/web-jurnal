@@ -61,6 +61,9 @@
                                         <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Mata Pelajaran</h6>
                                         </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Jurusan</h6>
+                                        </th>
                                         @if (auth()->user()->role === 'Admin')
                                             <th class="border-bottom-0">
                                                 <h6 class="fw-semibold mb-0">Action</h6>
@@ -79,10 +82,13 @@
                                                     <h6 class="fw-semibold mb-0">{{ $teacher->nip }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">{{ $teacher->name }}</h6>
+                                                    <h6 class="fw-semibold mb-1">{{ $teacher->teacher_name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">{{ $teacher->mapel->name }}</h6>
+                                                    <h6 class="fw-semibold mb-1">{{ $teacher->mapel->mapel_name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $teacher->jurusan->name }}</h6>
                                                 </td>
                                             </tr>
                                         @empty
@@ -102,10 +108,13 @@
                                                     <h6 class="fw-semibold mb-0">{{ $teacher->nip }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">{{ $teacher->name }}</h6>
+                                                    <h6 class="fw-semibold mb-1">{{ $teacher->teacher_name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">{{ $teacher->mapel->name }}</h6>
+                                                    <h6 class="fw-semibold mb-1">{{ $teacher->mapel->mapel_name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $teacher->jurusan->name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <form action="/dashboard/teacher/{{ $teacher->id }}" method="post"

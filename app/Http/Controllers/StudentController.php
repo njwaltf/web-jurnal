@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use App\Models\Jurusan;
 use App\Models\Rombel;
 use Barryvdh\DomPDF\Facade\PDF;
 
@@ -32,7 +33,8 @@ class StudentController extends Controller
     {
         return view('dashboard.siswa.create', [
             'title' => $this->title,
-            'rombels' => Rombel::all()
+            'rombels' => Rombel::all(),
+            'jurusans' => Jurusan::where('name', '!=', 'Umum')->get()
         ]);
     }
 
@@ -44,7 +46,8 @@ class StudentController extends Controller
         $validatedData = $request->validate([
             'full_name' => ['required', 'max:100'],
             'nis' => ['required', 'unique:students'],
-            'rombel_id' => ['required', 'max:1'],
+            'rombel_id' => ['required'],
+            'jurusan_id' => ['required']
         ]);
 
         Student::create($validatedData);
@@ -66,6 +69,7 @@ class StudentController extends Controller
     {
         return view('dashboard.siswa.edit', [
             'title' => $this->title,
+            'jurusans' => Jurusan::where('name', '!=', 'Umum')->get(),
             'rombels' => Rombel::all(),
             'student' => $student
         ]);
@@ -79,7 +83,8 @@ class StudentController extends Controller
         $validatedData = $request->validate([
             'full_name' => ['required', 'max:100'],
             'nis' => ['required'],
-            'rombel_id' => ['required', 'max:1'],
+            'rombel_id' => ['required'],
+            'jurusan_id' => ['required']
         ]);
         $student = Student::where('id', $student->id)->update($validatedData);
         return redirect('/dashboard/student/')->with('successEdit', "Data Murid berhasil diperbarui!");

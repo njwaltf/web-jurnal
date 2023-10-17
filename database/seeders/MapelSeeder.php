@@ -14,13 +14,16 @@ class MapelSeeder extends Seeder
     public function run() : void
     {
         Mapel::create([
-            'name' => 'Bahasa Inggris'
+            'mapel_name' => 'Bahasa Inggris',
+            'jurusan_id' => 6
         ]);
         Mapel::create([
-            'name' => 'PKN'
+            'mapel_name' => 'PKN',
+            'jurusan_id' => 6
         ]);
         Mapel::create([
-            'name' => 'Pemromgraman Berorientasi Objek'
+            'mapel_name' => 'Pemromgraman Berorientasi Objek',
+            'jurusan_id' => 1
         ]);
     }
 }

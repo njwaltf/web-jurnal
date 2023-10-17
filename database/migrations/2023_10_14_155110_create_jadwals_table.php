@@ -14,7 +14,9 @@ return new class extends Migration {
             $table->id();
             $table->string('day', 200);
             $table->foreignId('teacher_id');
+            $table->foreignId('mapel_id');
             $table->foreignId('rombel_id');
+            $table->foreignId('jurusan_id');
             $table->integer('start');
             $table->integer('finish');
             $table->timestamps();

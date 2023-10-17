@@ -16,23 +16,27 @@ class StudentSeeder extends Seeder
         Student::create([
             'nis' => '20210811',
             'full_name' => 'ADELIA HARNI',
-            'rombel_id' => 1
+            'rombel_id' => 1,
+            'jurusan_id' => 1
         ]);
         Student::create([
             'nis' => '20210812',
             'full_name' => 'ADELA DWI KIRANA',
-            'rombel_id' => 1
+            'rombel_id' => 1,
+            'jurusan_id' => 1
         ]);
 
         Student::create([
             'nis' => '20220899',
             'full_name' => 'AFTIKA NADYA ARLA',
-            'rombel_id' => 2
+            'rombel_id' => 2,
+            'jurusan_id' => 1
         ]);
         Student::create([
-            'nis' => '20220899',
+            'nis' => '20220890',
             'full_name' => 'AFTIKA NADYA ARLA',
-            'rombel_id' => 2
+            'rombel_id' => 2,
+            'jurusan_id' => 1
         ]);
     }
 }

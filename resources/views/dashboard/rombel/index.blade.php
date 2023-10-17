@@ -41,7 +41,8 @@
             <div class="col-lg-12 d-flex align-items-stretch">
                 <div class="card w-100">
                     <div class="card-body p-4">
-                        <h5 class="card-title fw-semibold mb-4">Daftar Rombel</h5>
+                        <h5 class="card-title fw-semibold mb-4">Daftar Rombel
+                        </h5>
                         <div class="table-responsive">
                             <table class="table text-nowrap mb-0 align-middle table-hover display" id="myTable">
                                 <thead class="text-dark fs-4">
@@ -51,6 +52,9 @@
                                         </th>
                                         <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Nama Rombel</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Nama Jurusan</h6>
                                         </th>
                                         @if (auth()->user()->role === 'Admin')
                                             <th class="border-bottom-0">
@@ -70,6 +74,9 @@
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-1">{{ $rombel->name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $rombel->jurusan->name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <form action="/dashboard/rombel/{{ $rombel->id }}" method="post"

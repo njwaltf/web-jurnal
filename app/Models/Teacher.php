@@ -15,5 +15,9 @@ class Teacher extends Model
     {
         return $this->belongsTo(Mapel::class);
     }
+    public function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class);
+    }
     use HasFactory;
 }

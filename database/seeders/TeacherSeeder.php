@@ -14,14 +14,16 @@ class TeacherSeeder extends Seeder
     public function run() : void
     {
         Teacher::create([
-            'name' => 'Asep',
+            'teacher_name' => 'Asep',
             'nip' => '5326972345',
             'mapel_id' => 1,
+            'jurusan_id' => 1
         ]);
         Teacher::create([
-            'name' => 'Agus',
+            'teacher_name' => 'Agus',
             'nip' => '5326972346',
             'mapel_id' => 2,
+            'jurusan_id' => 1
         ]);
     }
 }

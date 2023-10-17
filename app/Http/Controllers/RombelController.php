@@ -6,6 +6,7 @@ use App\Models\Rombel;
 use App\Http\Requests\StoreRombelRequest;
 use Barryvdh\DomPDF\Facade\PDF;
 use App\Http\Requests\UpdateRombelRequest;
+use App\Models\Jurusan;
 
 class RombelController extends Controller
 {
@@ -28,7 +29,8 @@ class RombelController extends Controller
     public function create()
     {
         return view('dashboard.rombel.create', [
-            'title' => $this->title
+            'title' => $this->title,
+            'jurusans' => Jurusan::all()
         ]);
     }
 
@@ -38,7 +40,8 @@ class RombelController extends Controller
     public function store(StoreRombelRequest $request)
     {
         $validatedData = $request->validate([
-            'name' => ['required', 'max:100']
+            'name' => ['required', 'max:100'],
+            'jurusan_id' => ['required']
         ]);
 
         Rombel::create($validatedData);
@@ -60,7 +63,8 @@ class RombelController extends Controller
     {
         return view('dashboard.rombel.edit', [
             'title' => $this->title,
-            'rombel' => $rombel
+            'rombel' => $rombel,
+            'jurusans' => Jurusan::all()
         ]);
     }
 
@@ -70,7 +74,8 @@ class RombelController extends Controller
     public function update(UpdateRombelRequest $request, Rombel $rombel)
     {
         $validatedData = $request->validate([
-            'name' => ['required', 'max:100']
+            'name' => ['required', 'max:100'],
+            'jurusan_id' => ['required']
         ]);
         $rombel = Rombel::where('id', $rombel->id)->update($validatedData);
         return redirect('/dashboard/rombel/')->with('successEdit', "Data rombel berhasil diperbarui!");

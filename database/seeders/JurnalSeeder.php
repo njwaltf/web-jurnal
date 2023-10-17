@@ -15,9 +15,8 @@ class JurnalSeeder extends Seeder
     {
         Jurnal::create([
             'date' => '2023-10-15',
-            'teacher_id' => 1,
+            'jadwal_id' => 1,
             'rombel_id' => 1,
-            'mapel_id' => 1,
             'kd' => 'KD 1',
             'material' => 'Perkalian',
             'task' => 'Bikin nuklir',
@@ -28,9 +27,8 @@ class JurnalSeeder extends Seeder
         ]);
         Jurnal::create([
             'date' => '2023-10-16',
-            'teacher_id' => 2,
+            'jadwal_id' => 1,
             'rombel_id' => 1,
-            'mapel_id' => 2,
             'kd' => 'KD 2',
             'material' => 'asal usul manusia',
             'task' => 'Bikin nuklir',

@@ -19,10 +19,32 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="name" class="form-label">Nama Mata Pelajaran</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                        id="name" name="name" value="{{ old('name', $mapel->name) }}">
-                                    @error('name')
+                                    <label for="mapel_name" class="form-label">Nama Mata Pelajaran</label>
+                                    <input type="text" class="form-control @error('mapel_name') is-invalid @enderror"
+                                        id="mapel_name" name="mapel_name"
+                                        value="{{ old('mapel_name', $mapel->mapel_name) }}">
+                                    @error('mapel_name')
+                                        <p class="invalid" style="color: red">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-4">
+                                    <label for="jurusan_id" class="form-label">Jurusan</label>
+                                    <select class="form-select @error('jurusan_id') is-invalid @enderror"
+                                        aria-label="Default select example" id="jurusan_id" name="jurusan_id">
+                                        <option value="" selected>Set Mapel</option>
+                                        @forelse ($jurusans as $jurusan)
+                                            <option value="{{ $jurusan->id }}"
+                                                @if ($mapel->jurusan_id === $jurusan->id) selected @endif>
+                                                {{ $jurusan->name }}</option>
+                                        @empty
+                                            <option value="">Belum diset</option>
+                                        @endforelse
+                                    </select>
+                                    @error('jurusan_id')
                                         <p class="invalid" style="color: red">
                                             {{ $message }}
                                         </p>

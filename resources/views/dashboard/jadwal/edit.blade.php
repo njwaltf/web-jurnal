@@ -17,7 +17,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="mb-4">
                                     <label for="title" class="form-label">Nama Guru</label>
                                     <select class="form-select @error('teacher_id') is-invalid @enderror"
@@ -25,7 +25,8 @@
                                         <option value="" selected>Set nama guru</option>
                                         @forelse ($teachers as $teacher)
                                             <option value="{{ $teacher->id }}"
-                                                @if ($jadwal->teacher_id === $teacher->id) selected @endif>{{ $teacher->name }}
+                                                @if ($jadwal->teacher_id === $teacher->id) selected @endif>
+                                                {{ $teacher->teacher_name }}
                                             </option>
                                         @empty
                                             <option value="">Belum diset</option>
@@ -38,7 +39,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="mb-4">
                                     <label for="title" class="form-label">Rombel</label>
                                     <select class="form-select @error('rombel_id') is-invalid @enderror"
@@ -53,6 +54,48 @@
                                         @endforelse
                                     </select>
                                     @error('rombel_id')
+                                        <p class="invalid" style="color: red">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="mb-4">
+                                    <label for="title" class="form-label">Jurusan</label>
+                                    <select class="form-select @error('jurusan_id') is-invalid @enderror"
+                                        aria-label="Default select example" id="jurusan_id" name="jurusan_id">
+                                        <option value="" selected>Set Jurusan</option>
+                                        @forelse ($jurusans as $rombel)
+                                            <option value="{{ $rombel->id }}"
+                                                @if ($jadwal->jurusan_id === $rombel->id) selected @endif>
+                                                {{ $rombel->name }}</option>
+                                        @empty
+                                            <option value="">Belum diset</option>
+                                        @endforelse
+                                    </select>
+                                    @error('jurusan_id')
+                                        <p class="invalid" style="color: red">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="mb-4">
+                                    <label for="title" class="form-label">Mata Pelajaran</label>
+                                    <select class="form-select @error('mapel_id') is-invalid @enderror"
+                                        aria-label="Default select example" id="mapel_id" name="mapel_id">
+                                        <option value="" selected>Set Jurusan</option>
+                                        @forelse ($mapels as $rombel)
+                                            <option value="{{ $rombel->id }}"
+                                                @if ($jadwal->mapel_id === $rombel->id) selected @endif>
+                                                {{ $rombel->mapel_name }}</option>
+                                        @empty
+                                            <option value="">Belum diset</option>
+                                        @endforelse
+                                    </select>
+                                    @error('mapel_id')
                                         <p class="invalid" style="color: red">
                                             {{ $message }}
                                         </p>

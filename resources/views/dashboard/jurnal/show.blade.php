@@ -23,10 +23,10 @@
                     </div>
                     <div class="row my-3">
                         <div class="col-lg-6 col-sm-12">
-                            <strong class="m-1">Nama Guru</strong>
+                            <strong class="m-1"></strong>
                         </div>
                         <div class="col-lg-6 col-sm-12">
-                            <p class="m-1">{{ $jurnal->teacher->name }}</p>
+                            <p class="m-1">{{ $jurnal->teacher_name }}</p>
                         </div>
                     </div>
                     <div class="row my-3">
@@ -34,7 +34,7 @@
                             <strong class="m-1">Rombel</strong>
                         </div>
                         <div class="col-lg-6 col-sm-12">
-                            <p class="m-1">{{ $jurnal->rombel->name }}</p>
+                            <p class="m-1">{{ $jurnal->name }}</p>
                         </div>
                     </div>
                 </div>

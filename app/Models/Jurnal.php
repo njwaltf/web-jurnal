@@ -10,17 +10,13 @@ class Jurnal extends Model
     protected $guarded = [
         'id'
     ];
-    public function teacher()
+    public function jadwal()
     {
-        return $this->belongsTo(Teacher::class);
+        return $this->belongsTo(Jadwal::class);
     }
     public function rombel()
     {
         return $this->belongsTo(Rombel::class);
-    }
-    public function mapel()
-    {
-        return $this->belongsTo(Mapel::class);
     }
     use HasFactory;
 }

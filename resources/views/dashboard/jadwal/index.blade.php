@@ -59,7 +59,13 @@
                                             <h6 class="fw-semibold mb-0">Nama Guru</h6>
                                         </th>
                                         <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Mata Pelajaran</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Rombel</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Jurusan</h6>
                                         </th>
                                         <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Mulai Jam Ke</h6>
@@ -76,7 +82,7 @@
                                 </thead>
                                 <tbody>
                                     @if (auth()->user()->role === 'PJ')
-                                        @forelse ($jadwals as $jadwal)
+                                        @forelse ($jadwal1 as $jadwal)
                                             <tr>
                                                 <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6>
@@ -85,10 +91,16 @@
                                                     <h6 class="fw-semibold mb-0">{{ $jadwal->day }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">{{ $jadwal->teacher->name }}</h6>
+                                                    <h6 class="fw-semibold mb-1">{{ $jadwal->teacher->teacher_name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $jadwal->mapel->teacher_name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-1">{{ $jadwal->rombel->name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $jadwal->jurusan->name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-1">{{ $jadwal->start }}</h6>
@@ -114,10 +126,16 @@
                                                     <h6 class="fw-semibold mb-0">{{ $jadwal->day }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">{{ $jadwal->teacher->name }}</h6>
+                                                    <h6 class="fw-semibold mb-1">{{ $jadwal->teacher->teacher_name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $jadwal->mapel->mapel_name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-1">{{ $jadwal->rombel->name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $jadwal->jurusan->name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-1">{{ $jadwal->start }}</h6>

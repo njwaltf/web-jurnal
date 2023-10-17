@@ -26,13 +26,13 @@ class DatabaseSeeder extends Seeder
             'username' => 'x_rpl',
             'rombel_id' => 1,
             'role' => 'PJ',
+            'jurusan_id' => 1,
             'password' => 'XRPL'
         ]);
 
         User::create([
             'username' => 'admin_jurnal',
             'role' => 'Admin',
-            'rombel_id' => 1000,
             'password' => 'admin_jurnal'
         ]);
 
@@ -44,5 +44,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AbsenSeeder::class);
         $this->call(AbsenDetailSeeder::class);
         $this->call(JurnalSeeder::class);
+        $this->call(JurusanSeeder::class);
     }
 }

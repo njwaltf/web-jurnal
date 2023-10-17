@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jadwal;
 use App\Http\Requests\StoreJadwalRequest;
 use App\Http\Requests\UpdateJadwalRequest;
+use App\Models\Jurusan;
 use App\Models\Mapel;
 use App\Models\Rombel;
 use Barryvdh\DomPDF\Facade\PDF;
@@ -20,6 +21,9 @@ class JadwalController extends Controller
     public function index()
     {
         return view('dashboard.jadwal.index', [
+            'jadwal1' => Jadwal::where([
+                ['rombel_id', '=', auth()->user()->rombel_id]
+            ])->get(),
             'jadwals' => Jadwal::all(),
             'title' => $this->title
         ]);
@@ -34,6 +38,8 @@ class JadwalController extends Controller
             'title' => $this->title,
             'teachers' => Teacher::all(),
             'rombels' => Rombel::all(),
+            'mapels' => Mapel::all(),
+            'jurusans' => Jurusan::where('name', '!=', 'Umum')->get()
         ]);
     }
 
@@ -46,6 +52,8 @@ class JadwalController extends Controller
             'day' => ['required', 'max:100'],
             'teacher_id' => ['required'],
             'rombel_id' => ['required'],
+            'mapel_id' => ['required'],
+            'jurusan_id' => ['required'],
             'start' => ['required'],
             'finish' => ['required'],
         ]);
@@ -70,7 +78,9 @@ class JadwalController extends Controller
         return view('dashboard.jadwal.edit', [
             'title' => $this->title,
             'teachers' => Teacher::all(),
+            'mapels' => Mapel::all(),
             'rombels' => Rombel::all(),
+            'jurusans' => Jurusan::where('name', '!=', 'Umum')->get(),
             'jadwal' => $jadwal
         ]);
     }
@@ -84,6 +94,8 @@ class JadwalController extends Controller
             'day' => ['required', 'max:100'],
             'teacher_id' => ['required'],
             'rombel_id' => ['required'],
+            'mapel_id' => ['required'],
+            'jurusan_id' => ['required'],
             'start' => ['required'],
             'finish' => ['required'],
         ]);

@@ -3,7 +3,7 @@
     <!--  Row 1 -->
     <div class="row">
         <div class="col-lg-12 my-3">
-            <h2><a href="/dashboard/student"><i class="ti ti-arrow-left"></i></a> Tambah Murid</h2>
+            <h2><a href="/dashboard/student"><i class="ti ti-arrow-left"></i></a> Edit Murid</h2>
         </div>
     </div>
     <form action="/dashboard/student/{{ $student->id }}" method="post">
@@ -60,6 +60,27 @@
                                         @endforelse
                                     </select>
                                     @error('rombel_id')
+                                        <p class="invalid" style="color: red">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-4">
+                                    <label for="title" class="form-label">Jurusan</label>
+                                    <select class="form-select @error('jurusan_id') is-invalid @enderror"
+                                        aria-label="Default select example" id="jurusan_id" name="jurusan_id">
+                                        <option value="" selected>Set Jurusan</option>
+                                        @forelse ($jurusans as $rombel)
+                                            <option value="{{ $rombel->id }}"
+                                                @if ($student->jurusan_id === $rombel->id) selected @endif>
+                                                {{ $rombel->name }}</option>
+                                        @empty
+                                            <option value="">Belum diset</option>
+                                        @endforelse
+                                    </select>
+                                    @error('jurusan_id')
                                         <p class="invalid" style="color: red">
                                             {{ $message }}
                                         </p>

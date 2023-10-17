@@ -6,6 +6,7 @@ use App\Models\Mapel;
 use App\Http\Requests\StoreMapelRequest;
 use Barryvdh\DomPDF\Facade\PDF;
 use App\Http\Requests\UpdateMapelRequest;
+use App\Models\Jurusan;
 
 class MapelController extends Controller
 {
@@ -28,7 +29,8 @@ class MapelController extends Controller
     public function create()
     {
         return view('dashboard.mapel.create', [
-            'title' => $this->title
+            'title' => $this->title,
+            'jurusans' => Jurusan::all()
         ]);
     }
 
@@ -38,7 +40,8 @@ class MapelController extends Controller
     public function store(StoreMapelRequest $request)
     {
         $validatedData = $request->validate([
-            'name' => ['required', 'max:100']
+            'mapel_name' => ['required', 'max:100'],
+            'jurusan_id' => ['required']
         ]);
 
         Mapel::create($validatedData);
@@ -59,6 +62,7 @@ class MapelController extends Controller
     public function edit(Mapel $mapel)
     {
         return view('dashboard.mapel.edit', [
+            'jurusans' => Jurusan::all(),
             'title' => $this->title,
             'mapel' => $mapel
         ]);
@@ -70,7 +74,8 @@ class MapelController extends Controller
     public function update(UpdateMapelRequest $request, Mapel $mapel)
     {
         $validatedData = $request->validate([
-            'name' => ['required', 'max:100']
+            'mapel_name' => ['required', 'max:100'],
+            'jurusan_id' => ['required']
         ]);
         $mapel = Mapel::where('id', $mapel->id)->update($validatedData);
         return redirect('/dashboard/mapel/')->with('successEdit', "Data mapel berhasil diperbarui!");

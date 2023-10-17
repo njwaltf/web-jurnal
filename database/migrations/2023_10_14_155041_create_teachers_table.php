@@ -12,9 +12,10 @@ return new class extends Migration {
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 200);
+            $table->string('teacher_name', 200);
             $table->string('nip', 20)->unique();
             $table->foreignId('mapel_id');
+            $table->foreignId('jurusan_id');
             $table->timestamps();
         });
     }

@@ -3,7 +3,7 @@
     <!--  Row 1 -->
     <div class="row">
         <div class="col-lg-12 my-3">
-            <h2><a href="/dashboard/jurnal"><i class="ti ti-arrow-left"></i></a> Tambah Guru</h2>
+            <h2><a href="/dashboard/jurnal"><i class="ti ti-arrow-left"></i></a> Edit Jurnal</h2>
         </div>
     </div>
     <form action="/dashboard/jurnal/{{ $jurnal->id }}" method="post">
@@ -31,19 +31,20 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-4">
-                                    <label for="teacher_id" class="form-label">Nama Guru</label>
-                                    <select class="form-select @error('teacher_id') is-invalid @enderror"
-                                        aria-label="Default select example" id="teacher_id" name="teacher_id">
-                                        <option value="" selected>Set nama guru</option>
-                                        @forelse ($teachers as $teacher)
-                                            <option value="{{ $teacher->id }}"
-                                                @if ($jurnal->teacher_id === $teacher->id) selected @endif>{{ $teacher->name }}
+                                    <label for="jadwal_id" class="form-label">Jadwal</label>
+                                    <select class="form-select @error('jadwal_id') is-invalid @enderror"
+                                        aria-label="Default select example" id="jadwal_id" name="jadwal_id">
+                                        <option value="" selected>Set pelajaran</option>
+                                        @forelse ($jadwals as $jadwal)
+                                            <option value="{{ $jadwal->id }}"
+                                                @if ($jurnal->jadwal_id === $jadwal->id) selected @endif>
+                                                {{ $jadwal->day . ', ' . $jadwal->teacher->teacher_name . ' - ' . $jadwal->mapel->mapel_name }}
                                             </option>
                                         @empty
                                             <option value="">Belum diset</option>
                                         @endforelse
                                     </select>
-                                    @error('teacher_id')
+                                    @error('jadwal_id')
                                         <p class="invalid" style="color: red">
                                             {{ $message }}
                                         </p>
@@ -52,28 +53,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="mb-4">
-                                    <label for="mapel_id" class="form-label">Mata Pelajaran</label>
-                                    <select class="form-select @error('mapel_id') is-invalid @enderror"
-                                        aria-label="Default select example" id="mapel_id" name="mapel_id">
-                                        <option value="" selected>Set pelajaran</option>
-                                        @forelse ($mapels as $mapel)
-                                            <option value="{{ $mapel->id }}"
-                                                @if ($jurnal->mapel_id === $mapel->id) selected @endif>{{ $mapel->name }}
-                                            </option>
-                                        @empty
-                                            <option value="">Belum diset</option>
-                                        @endforelse
-                                    </select>
-                                    @error('mapel_id')
-                                        <p class="invalid" style="color: red">
-                                            {{ $message }}
-                                        </p>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="mb-4">
                                     <label for="kd" class="form-label">KD/CP</label>
                                     <input type="text" name="kd"

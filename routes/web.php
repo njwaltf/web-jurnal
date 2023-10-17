@@ -9,6 +9,7 @@ use App\Http\Controllers\MapelController;
 use App\Http\Controllers\RombelController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\UserController;
 use App\Models\Jurnal;
 use App\Models\Student;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,7 @@ Route::resource('/dashboard/mapel', MapelController::class);
 Route::resource('/dashboard/rombel', RombelController::class);
 Route::resource('/dashboard/absen', AbsenController::class);
 Route::resource('/dashboard/jurnal', JurnalController::class);
+Route::resource('/dashboard/user', UserController::class);
 
 // absen
 // Route::get('/dashboard/absen/edit', [AbsenController::class, 'edit']);

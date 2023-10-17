@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreJurnalRequest;
 use App\Http\Requests\UpdateJurnalRequest;
+use App\Models\Jadwal;
 use App\Models\Jurnal;
 use App\Models\Mapel;
 // use App\Models\Rombel;
@@ -19,8 +20,13 @@ class JurnalController extends Controller
 
     public function index()
     {
+        $data = Jurnal::join('jadwals', 'jadwals.id', '=', 'jurnals.jadwal_id')
+            ->join('teachers', 'teachers.id', '=', 'jadwals.teacher_id')
+            ->join('mapels', 'mapels.id', '=', 'jadwals.mapel_id')
+            ->get(['jurnals.date', 'teachers.teacher_name', 'mapels.mapel_name', 'jurnals.kd', 'jurnals.date', 'jurnals.material', 'jurnals.task', 'jurnals.sakit', 'jurnals.izin', 'jurnals.alpha', 'jurnals.hadir', 'jurnals.detail', 'jurnals.id']);
         return view('dashboard.jurnal.index', [
-            'jurnals' => Jurnal::where('rombel_id', auth()->user()->rombel_id)->get(),
+            // 'jurnals' => Jurnal::where('rombel_id', auth()->user()->rombel_id)->get(),
+            'jurnals' => $data,
             'title' => $this->title
         ]);
     }
@@ -32,8 +38,9 @@ class JurnalController extends Controller
     {
         return view('dashboard.jurnal.create', [
             'title' => $this->title,
-            'teachers' => Teacher::all(),
-            'mapels' => Mapel::all()
+            'jadwals' => Jadwal::where([
+                ['rombel_id', '=', auth()->user()->rombel_id]
+            ])->get()
         ]);
     }
 
@@ -44,9 +51,8 @@ class JurnalController extends Controller
     {
         $validatedData = $request->validate([
             'date' => ['required', 'max:100'],
-            'teacher_id' => ['required'],
+            'jadwal_id' => ['required'],
             'rombel_id' => ['required'],
-            'mapel_id' => ['required'],
             'kd' => ['nullable'],
             'material' => ['nullable'],
             'task' => ['nullable'],
@@ -66,10 +72,16 @@ class JurnalController extends Controller
      */
     public function show(Jurnal $jurnal)
     {
-        return view('dashboard.jurnal.show', [
-            'title' => $this->title,
-            'jurnal' => $jurnal
-        ]);
+        // $data = Jurnal::join('jadwals', 'jadwals.id', '=', 'jurnals.jadwal_id')
+        //     ->join('teachers', 'teachers.id', '=', 'jadwals.teacher_id')
+        //     ->join('mapels', 'mapels.id', '=', 'jadwals.mapel_id')
+        //     ->join('rombels', 'rombels.id', '=', 'jadwals.rombel_id')
+        //     ->where('id', $jurnal->id)
+        //     ->get(['jurnals.date', 'teachers.teacher_name', 'mapels.mapel_name', 'jurnals.kd', 'jurnals.date', 'jurnals.material', 'jurnals.task', 'jurnals.sakit', 'jurnals.izin', 'jurnals.alpha', 'jurnals.hadir', 'jurnals.detail', 'jurnals.id']);
+        // return view('dashboard.jurnal.show', [
+        //     'title' => $this->title,
+        //     'jurnal' => $data
+        // ]);
     }
 
     /**
@@ -79,8 +91,9 @@ class JurnalController extends Controller
     {
         return view('dashboard.jurnal.edit', [
             'title' => $this->title,
-            'teachers' => Teacher::all(),
-            'mapels' => Mapel::all(),
+            'jadwals' => Jadwal::where([
+                ['rombel_id', '=', auth()->user()->rombel_id]
+            ])->get(),
             'jurnal' => $jurnal
         ]);
     }
@@ -92,17 +105,15 @@ class JurnalController extends Controller
     {
         $validatedData = $request->validate([
             'date' => ['required', 'max:100'],
-            'teacher_id' => ['required'],
-            'rombel_id' => ['required'],
-            'mapel_id' => ['required'],
-            'kd' => ['nullable'],
-            'material' => ['nullable'],
-            'task' => ['nullable'],
+            'jadwal_id' => ['required'],
+            'kd' => ['required'],
+            'material' => ['required'],
+            'task' => ['required'],
             'sakit' => ['nullable'],
             'izin' => ['nullable'],
             'hadir' => ['nullable'],
             'alpha' => ['nullable'],
-            'detail' => ['nullable'],
+            'detail' => ['required'],
         ]);
 
         $jurnal = Jurnal::where('id', $jurnal->id)->update($validatedData);

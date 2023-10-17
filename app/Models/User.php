@@ -21,6 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'rombel_id',
+        'jurusan_id',
         'role',
         'password',
     ];
@@ -48,5 +49,9 @@ class User extends Authenticatable
     public function rombel()
     {
         return $this->belongsTo(Rombel::class);
+    }
+    public function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class);
     }
 }

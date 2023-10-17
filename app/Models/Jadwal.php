@@ -21,4 +21,12 @@ class Jadwal extends Model
     {
         return $this->belongsTo(Rombel::class);
     }
+    public function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class);
+    }
+    public function mapel()
+    {
+        return $this->belongsTo(Mapel::class);
+    }
 }

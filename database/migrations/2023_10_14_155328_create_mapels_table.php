@@ -12,7 +12,8 @@ return new class extends Migration {
     {
         Schema::create('mapels', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 200);
+            $table->string('mapel_name', 200);
+            $table->foreignId('jurusan_id')->nullable();
             $table->timestamps();
         });
     }

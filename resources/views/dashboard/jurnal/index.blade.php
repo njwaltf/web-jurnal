@@ -65,7 +65,7 @@
                                         <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Tugas</h6>
                                         </th>
-                                        {{-- <th class="border-bottom-0">
+                                        <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">S</h6>
                                         </th>
                                         <th class="border-bottom-0">
@@ -76,7 +76,7 @@
                                         </th>
                                         <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Keterangan</h6>
-                                        </th> --}}
+                                        </th>
                                         <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Action</h6>
                                         </th>
@@ -89,10 +89,10 @@
                                                 <h6 class="fw-semibold mb-0">{{ $jurnal->date }}</h6>
                                             </td>
                                             <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">{{ $jurnal->teacher->name }}</h6>
+                                                <h6 class="fw-semibold mb-0">{{ $jurnal->teacher_name }}</h6>
                                             </td>
                                             <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">{{ $jurnal->mapel->name }}</h6>
+                                                <h6 class="fw-semibold mb-0">{{ $jurnal->mapel_name }}</h6>
                                             </td>
                                             <td class="border-bottom-0">
                                                 <h6 class="fw-semibold mb-0">{{ $jurnal->kd }}</h6>
@@ -103,7 +103,7 @@
                                             <td class="border-bottom-0">
                                                 <h6 class="fw-semibold mb-0">{{ $jurnal->task }}</h6>
                                             </td>
-                                            {{-- <td class="border-bottom-0">
+                                            <td class="border-bottom-0">
                                                 <h6 class="fw-semibold mb-0">
                                                     @if ($jurnal->sakit > 0)
                                                         {{ $jurnal->sakit }}
@@ -132,7 +132,7 @@
                                             </td>
                                             <td class="border-bottom-0">
                                                 <h6 class="fw-semibold mb-0">{{ $jurnal->detail }}</h6>
-                                            </td> --}}
+                                            </td>
                                             <td class="border-bottom-0">
                                                 <form action="/dashboard/jurnal/{{ $jurnal->id }}" method="post"
                                                     class="d-inline">
@@ -144,15 +144,12 @@
                                                 </form>
                                                 <a href="/dashboard/jurnal/{{ $jurnal->id }}/edit"
                                                     class="btn btn-warning m-1">Ubah <i class="ti ti-edit"></i></a>
-                                                <a href="/dashboard/jurnal/{{ $jurnal->id }}"
-                                                    class="btn btn-primary m-1">Detail <i
-                                                        class="ti ti-arrow-narrow-right"></i></a>
                                             </td>
                                         </tr>
                                     @empty
                                         <tr>
                                             <td colspan="11" class="text-center">
-                                                Belum ada guru
+                                                Belum ada jurnal
                                             </td>
                                         </tr>
                                     @endforelse

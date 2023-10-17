@@ -12,8 +12,9 @@ return new class extends Migration {
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('nis', 200);
+            $table->string('nis', 200)->unique();
             $table->string('full_name', 200);
+            $table->foreignId('jurusan_id');
             $table->foreignId('rombel_id');
             $table->timestamps();
         });

@@ -9,5 +9,9 @@ class Mapel extends Model
 {
 
     protected $guarded = ['id'];
+    public function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class);
+    }
     use HasFactory;
 }

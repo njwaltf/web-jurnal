@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mapel;
-// use App\Models\Rombel;
-use App\Models\Teacher;
-use Illuminate\Routing\Controller;
 use App\Http\Requests\StoreTeacherRequest;
-use Barryvdh\DomPDF\Facade\PDF;
+// use App\Models\Rombel;
 use App\Http\Requests\UpdateTeacherRequest;
+use App\Models\Jurusan;
+use App\Models\Mapel;
+use App\Models\Teacher;
+use Barryvdh\DomPDF\Facade\PDF;
+use Illuminate\Routing\Controller;
 
 class TeacherController extends Controller
 {
@@ -32,7 +33,8 @@ class TeacherController extends Controller
     {
         return view('dashboard.guru.create', [
             'title' => $this->title,
-            'mapels' => Mapel::all()
+            'mapels' => Mapel::all(),
+            'jurusans' => Jurusan::all()
         ]);
     }
 
@@ -42,9 +44,10 @@ class TeacherController extends Controller
     public function store(StoreTeacherRequest $request)
     {
         $validatedData = $request->validate([
-            'name' => ['required', 'max:100'],
+            'teacher_name' => ['required', 'max:100'],
             'nip' => ['required', 'unique:teachers'],
-            'mapel_id' => ['required', 'max:1'],
+            'mapel_id' => ['required'],
+            'jurusan_id' => ['required']
         ]);
 
         Teacher::create($validatedData);
@@ -67,6 +70,7 @@ class TeacherController extends Controller
         return view('dashboard.guru.edit', [
             'title' => $this->title,
             'mapels' => Mapel::all(),
+            'jurusans' => Jurusan::all(),
             'teacher' => $teacher
         ]);
     }
@@ -77,9 +81,10 @@ class TeacherController extends Controller
     public function update(UpdateTeacherRequest $request, Teacher $teacher)
     {
         $validatedData = $request->validate([
-            'name' => ['required', 'max:100'],
+            'teacher_name' => ['required', 'max:100'],
             'nip' => ['required'],
-            'mapel_id' => ['required', 'max:1'],
+            'mapel_id' => ['required'],
+            'jurusan_id' => ['required'],
         ]);
         $teacher = Teacher::where('id', $teacher->id)->update($validatedData);
         return redirect('/dashboard/teacher/')->with('successEdit', "Data Guru berhasil diperbarui!");

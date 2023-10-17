@@ -17,12 +17,33 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="mb-4">
                                     <label for="name" class="form-label">Nama Rombel</label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror"
                                         id="name" name="name" value="{{ old('name', $rombel->name) }}">
                                     @error('name')
+                                        <p class="invalid" style="color: red">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-4">
+                                    <label for="jurusan_id" class="form-label">Jurusan</label>
+                                    <select class="form-select @error('jurusan_id') is-invalid @enderror"
+                                        aria-label="Default select example" id="jurusan_id" name="jurusan_id">
+                                        <option value="" selected>Set Mapel</option>
+                                        @forelse ($jurusans as $mapel)
+                                            <option value="{{ $mapel->id }}"
+                                                @if ($rombel->jurusan_id === $mapel->id) selected @endif>
+                                                {{ $mapel->name }}</option>
+                                        @empty
+                                            <option value="">Belum diset</option>
+                                        @endforelse
+                                    </select>
+                                    @error('jurusan_id')
                                         <p class="invalid" style="color: red">
                                             {{ $message }}
                                         </p>
