@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\RombelController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TahunAjaranController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
 use App\Models\Jurnal;
@@ -26,11 +27,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [DashboardController::class, 'dashboard']);
+Route::get('/login', function () {
     return view('index');
 })->name('login');
 
-Route::post('/', [LoginController::class, 'auth']);
+Route::post('/login', [LoginController::class, 'auth']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // dashboard
@@ -52,6 +54,8 @@ Route::resource('/dashboard/rombel', RombelController::class);
 Route::resource('/dashboard/absen', AbsenController::class);
 Route::resource('/dashboard/jurnal', JurnalController::class);
 Route::resource('/dashboard/user', UserController::class);
+
+
 
 // absen
 // Route::get('/dashboard/absen/edit', [AbsenController::class, 'edit']);

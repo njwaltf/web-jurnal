@@ -59,9 +59,6 @@
                                             <h6 class="fw-semibold mb-0">Nama Lengkap</h6>
                                         </th>
                                         <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Mata Pelajaran</h6>
-                                        </th>
-                                        <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Jurusan</h6>
                                         </th>
                                         @if (auth()->user()->role === 'Admin')
@@ -85,9 +82,6 @@
                                                     <h6 class="fw-semibold mb-1">{{ $teacher->teacher_name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">{{ $teacher->mapel->mapel_name }}</h6>
-                                                </td>
-                                                <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-1">{{ $teacher->jurusan->name }}</h6>
                                                 </td>
                                             </tr>
@@ -99,7 +93,7 @@
                                             </tr>
                                         @endforelse
                                     @else
-                                        @forelse ($teachers as $teacher)
+                                        @forelse ($all_teachers as $teacher)
                                             <tr>
                                                 <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6>
@@ -109,9 +103,6 @@
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-1">{{ $teacher->teacher_name }}</h6>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">{{ $teacher->mapel->mapel_name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-1">{{ $teacher->jurusan->name }}</h6>

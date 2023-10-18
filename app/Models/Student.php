@@ -17,6 +17,10 @@ class Student extends Model
     {
         return $this->belongsTo(Rombel::class);
     }
+    public function tahun()
+    {
+        return $this->belongsTo(TahunAjaran::class);
+    }
     public function jurusan()
     {
         return $this->belongsTo(Jurusan::class);

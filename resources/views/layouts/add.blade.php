@@ -17,10 +17,10 @@
         data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
         <aside class="left-sidebar">
-            @include('partials.sidebar')
+            @include('partials.sidebar1')
             <!--  Main wrapper -->
             <div class="body-wrapper">
-                @include('partials.nav')
+                @include('partials.nav1')
                 <div class="container-fluid">
                     @yield('main')
                 </div>

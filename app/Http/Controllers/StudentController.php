@@ -46,6 +46,7 @@ class StudentController extends Controller
         $validatedData = $request->validate([
             'full_name' => ['required', 'max:100'],
             'nis' => ['required', 'unique:students'],
+            'tahun_ajaran' => ['required'],
             'rombel_id' => ['required'],
             'jurusan_id' => ['required']
         ]);
@@ -84,6 +85,7 @@ class StudentController extends Controller
             'full_name' => ['required', 'max:100'],
             'nis' => ['required'],
             'rombel_id' => ['required'],
+            'tahun_ajaran' => ['required'],
             'jurusan_id' => ['required']
         ]);
         $student = Student::where('id', $student->id)->update($validatedData);

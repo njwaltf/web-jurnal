@@ -11,10 +11,6 @@ class Teacher extends Model
         'id'
     ];
 
-    public function mapel()
-    {
-        return $this->belongsTo(Mapel::class);
-    }
     public function jurusan()
     {
         return $this->belongsTo(Jurusan::class);

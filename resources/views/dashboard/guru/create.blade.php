@@ -9,7 +9,7 @@
     <form action="/dashboard/teacher" method="post">
         @csrf
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">Data Guru</h5>
@@ -44,26 +44,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="mb-4">
-                                    <label for="title" class="form-label">Mapel</label>
-                                    <select class="form-select @error('mapel_id') is-invalid @enderror"
-                                        aria-label="Default select example" id="mapel_id" name="mapel_id">
-                                        <option value="" selected>Set Mapel</option>
-                                        @forelse ($mapels as $mapel)
-                                            <option value="{{ $mapel->id }}">{{ $mapel->mapel_name }}</option>
-                                        @empty
-                                            <option value="">Belum diset</option>
-                                        @endforelse
-                                    </select>
-                                    @error('mapel_id')
-                                        <p class="invalid" style="color: red">
-                                            {{ $message }}
-                                        </p>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="mb-4">
                                     <label for="title" class="form-label">Jurusan</label>
                                     <select class="form-select @error('jurusan_id') is-invalid @enderror"

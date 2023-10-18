@@ -62,6 +62,9 @@
                                             <h6 class="fw-semibold mb-0">Rombel</h6>
                                         </th>
                                         <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Tahun Ajaran</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Jurusan</h6>
                                         </th>
                                         @if (auth()->user()->role === 'Admin')
@@ -85,10 +88,13 @@
                                                     <h6 class="fw-semibold mb-1">{{ $student->full_name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">{{ $student->jurusan->name }}</h6>
+                                                    <h6 class="fw-semibold mb-1">{{ $student->rombel->name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">{{ $student->rombel->name }}</h6>
+                                                    <h6 class="fw-semibold mb-1">{{ $student->tahun_ajaran }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $student->jurusan->name }}</h6>
                                                 </td>
                                             </tr>
                                         @empty
@@ -112,6 +118,9 @@
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-1">{{ $student->rombel->name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $student->tahun_ajaran }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-1">{{ $student->jurusan->name }}</h6>

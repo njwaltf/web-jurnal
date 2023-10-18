@@ -31,12 +31,25 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="mb-4">
                                     <label for="nis" class="form-label">NISN</label>
                                     <input type="text" class="form-control @error('nis') is-invalid @enderror"
                                         id="nis" name="nis" value="{{ old('nis', $student->nis) }}">
                                     @error('nis')
+                                        <p class="invalid" style="color: red">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-4">
+                                    <label for="tahun_ajaran" class="form-label">Tahun Ajaran</label>
+                                    <input type="text" class="form-control @error('tahun_ajaran') is-invalid @enderror"
+                                        id="tahun_ajaran" name="tahun_ajaran"
+                                        value="{{ old('tahun_ajaran', $student->tahun_ajaran) }}">
+                                    @error('tahun_ajaran')
                                         <p class="invalid" style="color: red">
                                             {{ $message }}
                                         </p>

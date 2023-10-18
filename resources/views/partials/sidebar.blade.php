@@ -1,7 +1,7 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="./index.html" class="text-nowrap logo-img">
+                    <a href="/" class="text-nowrap logo-img">
                         <img src="{{ asset('images/logos/dark-logo.svg') }}" width="180" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -110,7 +110,7 @@
                                     <span>
                                         <i class="ti ti-calendar"></i>
                                     </span>
-                                    <span class="hide-menu">Jadwal</span>
+                                    <span class="hide-menu">Daftar Jadwal</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
@@ -118,7 +118,7 @@
                                     <span>
                                         <i class="ti ti-book"></i>
                                     </span>
-                                    <span class="hide-menu">Mapel</span>
+                                    <span class="hide-menu">Daftar Mapel</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
@@ -126,7 +126,7 @@
                                     <span>
                                         <i class="ti ti-school"></i>
                                     </span>
-                                    <span class="hide-menu">Rombel</span>
+                                    <span class="hide-menu">Daftar Rombel</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
@@ -135,6 +135,14 @@
                                         <i class="ti ti-users"></i>
                                     </span>
                                     <span class="hide-menu">Kelola User</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="/dashboard/jurnal" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-list"></i>
+                                    </span>
+                                    <span class="hide-menu">Jurnal Harian</span>
                                 </a>
                             </li>
                         @endif

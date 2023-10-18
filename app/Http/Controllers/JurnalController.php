@@ -22,11 +22,20 @@ class JurnalController extends Controller
     {
         $data = Jurnal::join('jadwals', 'jadwals.id', '=', 'jurnals.jadwal_id')
             ->join('teachers', 'teachers.id', '=', 'jadwals.teacher_id')
+            ->join('rombels', 'rombels.id', '=', 'jurnals.rombel_id')
             ->join('mapels', 'mapels.id', '=', 'jadwals.mapel_id')
-            ->get(['jurnals.date', 'teachers.teacher_name', 'mapels.mapel_name', 'jurnals.kd', 'jurnals.date', 'jurnals.material', 'jurnals.task', 'jurnals.sakit', 'jurnals.izin', 'jurnals.alpha', 'jurnals.hadir', 'jurnals.detail', 'jurnals.id']);
+            ->where('jurnals.rombel_id', auth()->user()->rombel_id)
+            ->get(['jurnals.date', 'teachers.teacher_name', 'mapels.mapel_name', 'jurnals.kd', 'jurnals.date', 'jurnals.material', 'jurnals.task', 'jurnals.sakit', 'jurnals.izin', 'jurnals.alpha', 'jurnals.hadir', 'jurnals.detail', 'jurnals.id', 'rombels.name']);
+
+        $data1 = Jurnal::join('jadwals', 'jadwals.id', '=', 'jurnals.jadwal_id')
+            ->join('teachers', 'teachers.id', '=', 'jadwals.teacher_id')
+            ->join('mapels', 'mapels.id', '=', 'jadwals.mapel_id')
+            ->join('rombels', 'rombels.id', '=', 'jurnals.rombel_id')
+            ->get(['jurnals.date', 'teachers.teacher_name', 'mapels.mapel_name', 'jurnals.kd', 'jurnals.date', 'jurnals.material', 'jurnals.task', 'jurnals.sakit', 'jurnals.izin', 'jurnals.alpha', 'jurnals.hadir', 'jurnals.detail', 'jurnals.id', 'rombels.name']);
         return view('dashboard.jurnal.index', [
             // 'jurnals' => Jurnal::where('rombel_id', auth()->user()->rombel_id)->get(),
             'jurnals' => $data,
+            'all_jurnals' => $data1,
             'title' => $this->title
         ]);
     }

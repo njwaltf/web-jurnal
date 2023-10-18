@@ -51,6 +51,9 @@
                                             <h6 class="fw-semibold mb-0">Tanggal</h6>
                                         </th>
                                         <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Kelas</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Nama Guru</h6>
                                         </th>
                                         <th class="border-bottom-0">
@@ -83,76 +86,155 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($jurnals as $jurnal)
-                                        <tr>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">{{ $jurnal->date }}</h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">{{ $jurnal->teacher_name }}</h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">{{ $jurnal->mapel_name }}</h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">{{ $jurnal->kd }}</h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">{{ $jurnal->material }}</h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">{{ $jurnal->task }}</h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">
-                                                    @if ($jurnal->sakit > 0)
-                                                        {{ $jurnal->sakit }}
-                                                    @else
-                                                        Tidak ada
-                                                    @endif
-                                                </h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">
-                                                    @if ($jurnal->izin > 0)
-                                                        {{ $jurnal->izin }}
-                                                    @else
-                                                        Tidak ada
-                                                    @endif
-                                                </h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">
-                                                    @if ($jurnal->alpha > 0)
-                                                        {{ $jurnal->alpha }}
-                                                    @else
-                                                        Tidak ada
-                                                    @endif
-                                                </h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">{{ $jurnal->detail }}</h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <form action="/dashboard/jurnal/{{ $jurnal->id }}" method="post"
-                                                    class="d-inline">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button class="btn btn-danger m-1" type="submit"
-                                                        onclick="return confirm('Apakah kamu yakin ingin menghapus ini?')">Hapus
-                                                        <i class="ti ti-circle-x"></i></button>
-                                                </form>
-                                                <a href="/dashboard/jurnal/{{ $jurnal->id }}/edit"
-                                                    class="btn btn-warning m-1">Ubah <i class="ti ti-edit"></i></a>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="11" class="text-center">
-                                                Belum ada jurnal
-                                            </td>
-                                        </tr>
-                                    @endforelse
+                                    @if (auth()->user()->role === 'PJ')
+                                        @forelse ($jurnals as $jurnal)
+                                            <tr>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->date }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->teacher_name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->mapel_name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->kd }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->material }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->task }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">
+                                                        @if ($jurnal->sakit > 0)
+                                                            {{ $jurnal->sakit }}
+                                                        @else
+                                                            Tidak ada
+                                                        @endif
+                                                    </h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">
+                                                        @if ($jurnal->izin > 0)
+                                                            {{ $jurnal->izin }}
+                                                        @else
+                                                            Tidak ada
+                                                        @endif
+                                                    </h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">
+                                                        @if ($jurnal->alpha > 0)
+                                                            {{ $jurnal->alpha }}
+                                                        @else
+                                                            Tidak ada
+                                                        @endif
+                                                    </h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->detail }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <form action="/dashboard/jurnal/{{ $jurnal->id }}" method="post"
+                                                        class="d-inline">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-danger m-1" type="submit"
+                                                            onclick="return confirm('Apakah kamu yakin ingin menghapus ini?')">Hapus
+                                                            <i class="ti ti-circle-x"></i></button>
+                                                    </form>
+                                                    <a href="/dashboard/jurnal/{{ $jurnal->id }}/edit"
+                                                        class="btn btn-warning m-1">Ubah <i class="ti ti-edit"></i></a>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="11" class="text-center">
+                                                    Belum ada jurnal
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    @else
+                                        @forelse ($all_jurnals as $jurnal)
+                                            <tr>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->date }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->teacher_name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->mapel_name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->kd }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->material }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->task }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">
+                                                        @if ($jurnal->sakit > 0)
+                                                            {{ $jurnal->sakit }}
+                                                        @else
+                                                            Tidak ada
+                                                        @endif
+                                                    </h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">
+                                                        @if ($jurnal->izin > 0)
+                                                            {{ $jurnal->izin }}
+                                                        @else
+                                                            Tidak ada
+                                                        @endif
+                                                    </h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">
+                                                        @if ($jurnal->alpha > 0)
+                                                            {{ $jurnal->alpha }}
+                                                        @else
+                                                            Tidak ada
+                                                        @endif
+                                                    </h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">{{ $jurnal->detail }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <form action="/dashboard/jurnal/{{ $jurnal->id }}" method="post"
+                                                        class="d-inline">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-danger m-1" type="submit"
+                                                            onclick="return confirm('Apakah kamu yakin ingin menghapus ini?')">Hapus
+                                                            <i class="ti ti-circle-x"></i></button>
+                                                    </form>
+                                                    <a href="/dashboard/jurnal/{{ $jurnal->id }}/edit"
+                                                        class="btn btn-warning m-1">Ubah <i class="ti ti-edit"></i></a>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="11" class="text-center">
+                                                    Belum ada jurnal
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

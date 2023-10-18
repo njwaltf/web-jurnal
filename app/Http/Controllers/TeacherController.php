@@ -21,7 +21,9 @@ class TeacherController extends Controller
     public function index()
     {
         return view('dashboard.guru.index', [
-            'teachers' => Teacher::all(),
+            'all_teachers' => Teacher::all(),
+            'teachers' => Teacher::where('jurusan_id', auth()->user()->jurusan_id)
+                ->orWhere('jurusan_id', 6)->get(),
             'title' => $this->title
         ]);
     }
@@ -33,7 +35,6 @@ class TeacherController extends Controller
     {
         return view('dashboard.guru.create', [
             'title' => $this->title,
-            'mapels' => Mapel::all(),
             'jurusans' => Jurusan::all()
         ]);
     }
@@ -46,7 +47,6 @@ class TeacherController extends Controller
         $validatedData = $request->validate([
             'teacher_name' => ['required', 'max:100'],
             'nip' => ['required', 'unique:teachers'],
-            'mapel_id' => ['required'],
             'jurusan_id' => ['required']
         ]);
 
@@ -69,7 +69,6 @@ class TeacherController extends Controller
     {
         return view('dashboard.guru.edit', [
             'title' => $this->title,
-            'mapels' => Mapel::all(),
             'jurusans' => Jurusan::all(),
             'teacher' => $teacher
         ]);
@@ -83,7 +82,6 @@ class TeacherController extends Controller
         $validatedData = $request->validate([
             'teacher_name' => ['required', 'max:100'],
             'nip' => ['required'],
-            'mapel_id' => ['required'],
             'jurusan_id' => ['required'],
         ]);
         $teacher = Teacher::where('id', $teacher->id)->update($validatedData);

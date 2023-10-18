@@ -87,7 +87,7 @@
                                             </tr>
                                         @endforelse
                                     @else
-                                        @forelse ($mapels as $mapel)
+                                        @forelse ($all_mapels as $mapel)
                                             <tr>
                                                 <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6>

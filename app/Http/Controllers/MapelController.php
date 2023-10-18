@@ -18,7 +18,8 @@ class MapelController extends Controller
     public function index()
     {
         return view('dashboard.mapel.index', [
-            'mapels' => Mapel::all(),
+            'all_mapels' => Mapel::all(),
+            'mapels' => Mapel::where('jurusan_id', auth()->user()->jurusan_id)->orWhere('jurusan_id', 6)->get(),
             'title' => $this->title
         ]);
     }

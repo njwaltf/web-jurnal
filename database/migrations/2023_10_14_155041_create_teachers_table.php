@@ -14,7 +14,6 @@ return new class extends Migration {
             $table->id();
             $table->string('teacher_name', 200);
             $table->string('nip', 20)->unique();
-            $table->foreignId('mapel_id');
             $table->foreignId('jurusan_id');
             $table->timestamps();
         });

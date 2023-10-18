@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('nis', 200)->unique();
             $table->string('full_name', 200);
             $table->foreignId('jurusan_id');
+            $table->string('tahun_ajaran', 50);
             $table->foreignId('rombel_id');
             $table->timestamps();
         });

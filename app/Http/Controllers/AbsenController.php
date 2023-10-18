@@ -68,7 +68,16 @@ class AbsenController extends Controller
      */
     public function show(Absen $absen)
     {
-        //
+        return view('dashboard.absen.show', [
+            'title' => $this->title,
+            'absen' => $absen,
+            // 'absen_details' => AbsenDetail::where('date', $absen->date)->orWhere('rombel_id', auth()->user()->rombel_id)->get(),
+            'absen_details' => AbsenDetail::where([
+                ['date_detail', '=', $absen->date],
+                ['rombel_id', '=', $absen->rombel_id]
+            ])->get(),
+            'students' => Student::where('rombel_id', auth()->user()->rombel_id)->get()
+        ]);
     }
 
     /**

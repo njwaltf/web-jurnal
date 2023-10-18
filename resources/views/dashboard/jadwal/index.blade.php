@@ -94,7 +94,7 @@
                                                     <h6 class="fw-semibold mb-1">{{ $jadwal->teacher->teacher_name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">{{ $jadwal->mapel->teacher_name }}</h6>
+                                                    <h6 class="fw-semibold mb-1">{{ $jadwal->mapel->mapel_name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-1">{{ $jadwal->rombel->name }}</h6>
